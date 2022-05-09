@@ -22,7 +22,7 @@ class HomeViewPagerFragment : Fragment() {
         binding.viewPager.adapter = SunflowerPagerAdapter(this)
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = if(position == 0) "0" else "1"
+            tab.text = if(position == 0) "MY_GARDEN" else "PLANT_LIST"
         }.attach()
 
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
