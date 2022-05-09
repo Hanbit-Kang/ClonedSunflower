@@ -18,7 +18,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun plantDao(): PlantDao
 
     companion object {
-        private const val DATABASE_NAME = "sunflower-db2"
+        private const val DATABASE_NAME = "sunflower-db4"
 
         @Volatile private var instance: AppDatabase? = null
 
