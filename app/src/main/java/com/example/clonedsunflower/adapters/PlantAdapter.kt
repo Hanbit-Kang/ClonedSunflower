@@ -3,9 +3,11 @@ package com.example.clonedsunflower.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.clonedsunflower.HomeViewPagerFragmentDirections
 import com.example.clonedsunflower.data.Plant
 import com.example.clonedsunflower.databinding.ListItemPlantBinding
 
@@ -27,11 +29,16 @@ class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallba
 
     class PlantViewHolder(private val binding: ListItemPlantBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.setClickListener {
-                binding.plant?.let {
-                    // TODO: navigateToPlant()
+            binding.setClickListener { view ->
+                binding.plant?.let { plant ->
+                    navigateToPlant(plant, view)
                 }
             }
+        }
+
+        private fun navigateToPlant(plant: Plant, view: View) {
+            val dir = HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment()
+            view.findNavController().navigate(dir)
         }
 
         fun bind(item: Plant) {

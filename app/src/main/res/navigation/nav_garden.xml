@@ -10,6 +10,16 @@
         android:name="com.example.clonedsunflower.HomeViewPagerFragment"
         tools:layout="@layout/fragment_home_view_pager">
 
+        <action
+            android:id="@+id/action_view_pager_fragment_to_plant_detail_fragment"
+            app:destination="@id/plant_detail_fragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/plant_detail_fragment"
+        android:name="com.example.clonedsunflower.PlantDetailFragment">
+
     </fragment>
 
 </navigation>
