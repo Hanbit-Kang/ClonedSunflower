@@ -5,55 +5,44 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
+import com.example.clonedsunflower.adapters.GardenPlantingAdapter
+import com.example.clonedsunflower.adapters.PLANT_LIST_PAGE_INDEX
+import com.example.clonedsunflower.databinding.FragmentGardenBinding
+import com.example.clonedsunflower.viewmodels.GardenPlantingListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [GardenFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class GardenFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentGardenBinding
+    private val viewModel: GardenPlantingListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_garden, container, false)
+        binding = FragmentGardenBinding.inflate(inflater, container, false)
+        val adapter = GardenPlantingAdapter()
+        binding.gardenList.adapter = adapter
+
+        binding.addPlant.setOnClickListener {
+            navigateToPlantListPage()
+        }
+
+        subscribeUi(adapter, binding)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GardenFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GardenFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun subscribeUi(adapter: GardenPlantingAdapter, binding: FragmentGardenBinding){
+        viewModel.plantAndGardenPlantings.observe(viewLifecycleOwner) {
+            binding.hasPlantings = !it.isNullOrEmpty()
+            adapter.submitList(it)
+        }
+    }
+
+    private fun navigateToPlantListPage() {
+        requireActivity().findViewById<ViewPager2>(R.id.view_pager).currentItem =
+            PLANT_LIST_PAGE_INDEX
     }
 }
