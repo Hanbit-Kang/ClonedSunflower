@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
@@ -13,13 +14,14 @@ import com.example.clonedsunflower.workers.SeedDatabaseWorker
 import com.example.clonedsunflower.workers.SeedDatabaseWorker.Companion.KEY_FILENAME
 
 
-@Database(entities = [Plant::class], version = 1, exportSchema = false)
+@Database(entities = [GardenPlanting::class, Plant::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun plantDao(): PlantDao
     abstract fun gardenPlantingDao(): GardenPlantingDao
+    abstract fun plantDao(): PlantDao
 
     companion object {
-        private const val DATABASE_NAME = "sunflower-db4"
+        private const val DATABASE_NAME = "sunflower-db5"
 
         @Volatile private var instance: AppDatabase? = null
 

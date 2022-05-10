@@ -20,6 +20,10 @@
         android:id="@+id/plant_detail_fragment"
         android:name="com.example.clonedsunflower.PlantDetailFragment">
 
+        <argument
+            android:name="plantId"
+            app:argType="string"/>
+
     </fragment>
 
 </navigation>

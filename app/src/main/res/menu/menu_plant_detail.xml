@@ -20,8 +20,8 @@
 
     <item
         android:id="@+id/action_share"
-        android:icon="@drawable/ic_detail_share"
-        android:title="@string/menu_item_share_plant"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:title="share"
         app:showAsAction="ifRoom" />
 
 </menu>

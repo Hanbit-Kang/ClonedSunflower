@@ -37,7 +37,7 @@ class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallba
         }
 
         private fun navigateToPlant(plant: Plant, view: View) {
-            val dir = HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment()
+            val dir = HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(plant.plantId)
             view.findNavController().navigate(dir)
         }
 
