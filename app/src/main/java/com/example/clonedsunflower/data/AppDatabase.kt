@@ -16,6 +16,7 @@ import com.example.clonedsunflower.workers.SeedDatabaseWorker.Companion.KEY_FILE
 @Database(entities = [Plant::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun plantDao(): PlantDao
+    abstract fun gardenPlantingDao(): GardenPlantingDao
 
     companion object {
         private const val DATABASE_NAME = "sunflower-db4"
