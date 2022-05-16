@@ -60,7 +60,7 @@ class PlantDaoTest {
 
         // Ensure plant list is sorted by name
         assertThat(plantList[0], equalTo(plantA))
-        assertThat(plantList[0], equalTo(plantB))
+        assertThat(plantList[1], equalTo(plantB))
     }
 
     @Test

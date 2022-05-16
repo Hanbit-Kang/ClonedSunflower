@@ -13,7 +13,7 @@ android {
         applicationId "com.google.samples.apps.sunflower"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        testInstrumentationRunner "com.google.samples.apps.sunflower.utilities.MainTestRunner"
+        testInstrumentationRunner "com.example.clonedsunflower.utilities.MainTestRunner"
         versionCode 1
         versionName "0.1.6"
         vectorDrawables.useSupportLibrary true
