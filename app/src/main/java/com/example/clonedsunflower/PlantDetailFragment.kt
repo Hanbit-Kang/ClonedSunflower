@@ -80,7 +80,7 @@ class PlantDetailFragment : Fragment() {
     private fun createShareIntent() {
         val shareText = plantDetailViewModel.plant.value.let { plant ->
             if(plant == null) ""
-            else "Check out the ${plant.name} plant in the Android Sunflower"
+            else getString(R.string.share_text_plant, plant.name)
         }
         val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
             .setText(shareText)
