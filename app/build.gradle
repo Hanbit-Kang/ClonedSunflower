@@ -10,7 +10,7 @@ android {
         dataBinding true
     }
     defaultConfig {
-        applicationId "com.google.samples.apps.sunflower"
+        applicationId "com.example.clonedsunflower"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         testInstrumentationRunner "com.example.clonedsunflower.utilities.MainTestRunner"

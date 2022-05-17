@@ -1,6 +1,8 @@
 package com.example.clonedsunflower.utilities
 
+import android.app.Activity
 import android.content.Intent
+import androidx.appcompat.widget.Toolbar
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra
 import com.example.clonedsunflower.data.GardenPlanting
@@ -24,6 +26,9 @@ val testCalendar: Calendar = Calendar.getInstance().apply {
 }
 
 val testGardenPlanting = GardenPlanting(testPlant.plantId, testCalendar, testCalendar)
+
+fun getToolbarNavigationContentDescription(activity: Activity, toolbarId: Int) =
+    activity.findViewById<Toolbar>(toolbarId).navigationContentDescription as String
 
 fun chooser(matcher: Matcher<Intent>): Matcher<Intent> = allOf(
     hasAction(Intent.ACTION_CHOOSER),
